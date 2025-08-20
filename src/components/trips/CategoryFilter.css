@@ -1,0 +1,236 @@
+/* CategoryFilter Component Styles */
+
+.category-filter {
+  margin: 2rem 0;
+}
+
+.category-filter-btn {
+  min-height: 120px;
+  border-radius: var(--border-radius-lg);
+  border: 2px solid #E9ECEF;
+  background: white;
+  transition: var(--transition-normal);
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-filter-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+  border-color: var(--turquoise);
+}
+
+.category-filter-btn.active {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+  border-width: 3px;
+}
+
+.category-filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.category-filter-btn:hover::before,
+.category-filter-btn.active::before {
+  opacity: 1;
+}
+
+.category-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  height: 100%;
+}
+
+.category-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  transition: var(--transition-fast);
+}
+
+.category-filter-btn:hover .category-icon {
+  transform: scale(1.1);
+}
+
+.category-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.category-badge {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Category Color Themes */
+.category-1ABC9C .category-icon {
+  color: #1ABC9C;
+}
+
+.category-FF7043 .category-icon {
+  color: #FF7043;
+}
+
+.category-FFD54F .category-icon {
+  color: #FFD54F;
+}
+
+.category-4FC3F7 .category-icon {
+  color: #4FC3F7;
+}
+
+.category-FF8A80 .category-icon {
+  color: #FF8A80;
+}
+
+.category-default .category-icon {
+  color: var(--turquoise);
+}
+
+/* Mobile Horizontal Scroll */
+.category-filter-mobile {
+  margin: 1rem 0;
+  display: none;
+}
+
+.category-scroll {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  margin: 0 -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--turquoise) transparent;
+}
+
+.category-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.category-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.category-scroll::-webkit-scrollbar-thumb {
+  background: var(--turquoise);
+  border-radius: 2px;
+}
+
+.category-mobile-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-fast);
+}
+
+.category-mobile-btn:hover {
+  transform: translateY(-1px);
+}
+
+.category-mobile-btn.active {
+  font-weight: 600;
+}
+
+/* RTL Support */
+[dir="rtl"] .category-scroll {
+  margin: 0 -1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+[dir="rtl"] .category-mobile-btn i {
+  margin-left: 0.25rem;
+  margin-right: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .category-filter > .row {
+    display: none;
+  }
+  
+  .category-filter-mobile {
+    display: block;
+  }
+
+  .category-filter-btn {
+    min-height: 100px;
+  }
+
+  .category-content {
+    padding: 0.75rem 0.25rem;
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .category-name {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .category-filter-btn {
+    min-height: 80px;
+  }
+
+  .category-icon {
+    font-size: 1.25rem;
+  }
+
+  .category-name {
+    font-size: 0.75rem;
+  }
+}
+
+/* Animation Classes */
+.category-filter.fade-in {
+  animation: categoryFadeIn 0.6s ease-out;
+}
+
+@keyframes categoryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading State */
+.category-filter.loading .category-filter-btn {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: categoryLoading 1.5s infinite;
+}
+
+@keyframes categoryLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

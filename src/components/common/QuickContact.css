@@ -1,0 +1,142 @@
+/* Quick Contact Styles */
+
+.quick-contact {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.quick-contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" fill-opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+}
+
+.contact-title {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8) !important;
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  background: white;
+}
+
+.contact-icon {
+  font-size: 3rem;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.contact-method-title {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.contact-method-subtitle {
+  font-size: 0.9rem;
+}
+
+.contact-action-btn {
+  border-width: 2px;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Emergency Contact */
+.emergency-contact {
+  border: none;
+  border-radius: 15px;
+  background: rgba(220, 53, 69, 0.1);
+  border: 2px solid rgba(220, 53, 69, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+}
+
+.emergency-contact .card-body {
+  padding: 2rem;
+}
+
+.emergency-icon {
+  font-size: 2.5rem;
+  color: #dc3545;
+  animation: pulse 2s infinite;
+}
+
+.emergency-title {
+  color: white;
+  font-weight: bold;
+}
+
+.emergency-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .quick-contact {
+    padding: 3rem 0;
+  }
+  
+  .contact-icon {
+    font-size: 2.5rem;
+  }
+  
+  .contact-card {
+    margin-bottom: 1rem;
+  }
+  
+  .emergency-contact .card-body {
+    padding: 1.5rem;
+  }
+  
+  .contact-action-btn {
+    font-size: 0.9rem;
+    padding: 0.4rem 1.2rem;
+  }
+}

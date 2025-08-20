@@ -1,0 +1,110 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "search": "بحث",
+    "filter": "تصفية",
+    "reset": "إعادة تعيين",
+    "submit": "إرسال",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "view": "عرض",
+    "close": "إغلاق",
+    "next": "التالي",
+    "previous": "السابق",
+    "home": "الرئيسية",
+    "about": "عن الشركة",
+    "contact": "اتصل بنا",
+    "language": "اللغة"
+  },
+  "navigation": {
+    "trips": "الرحلات",
+    "categories": "الفئات",
+    "bookings": "الحجوزات",
+    "myBookings": "حجوزاتي"
+  },
+  "categories": {
+    "beach": "رحلات بحرية",
+    "nile": "رحلات نيلية",
+    "desert": "رحلات صحراوية",
+    "cultural": "رحلات ثقافية",
+    "dayTrips": "رحلات يوم واحد",
+    "festivals": "رحلات مهرجانات"
+  },
+  "trip": {
+    "title": "اسم الرحلة",
+    "description": "وصف الرحلة",
+    "startDate": "تاريخ الانطلاق",
+    "deadline": "آخر موعد للحجز",
+    "startLocation": "مكان الانطلاق",
+    "accommodation": "مكان الإقامة",
+    "program": "برنامج الرحلة",
+    "gallery": "معرض الصور",
+    "pricing": "الأسعار",
+    "remaining": "المقاعد المتبقية",
+    "required": "العدد المطلوب",
+    "mealsIncluded": "الوجبات شاملة",
+    "mealsNotIncluded": "الوجبات غير شاملة",
+    "bookNow": "احجز الآن",
+    "viewDetails": "عرض التفاصيل",
+    "fullyBooked": "مكتملة الحجز",
+    "cancelled": "ملغية"
+  },
+  "pricing": {
+    "adult": "فرد بالغ",
+    "child0to4": "طفل (يوم - 4 سنوات)",
+    "child4to6": "طفل (4 - 6 سنوات)",
+    "child6to12": "طفل (6 - 12 سنة)",
+    "roomTypes": "أنواع الغرف",
+    "single": "فردي",
+    "double": "مزدوج",
+    "triple": "ثلاثي",
+    "extraCost": "تكلفة إضافية",
+    "total": "الإجمالي",
+    "egp": "جنيه مصري"
+  },
+  "booking": {
+    "form": "نموذج الحجز",
+    "personalInfo": "البيانات الشخصية",
+    "tripDetails": "تفاصيل الرحلة",
+    "clientName": "اسم العميل",
+    "adultsCount": "عدد البالغين",
+    "children0to4Count": "عدد الأطفال (يوم - 4 سنوات)",
+    "children4to6Count": "عدد الأطفال (4 - 6 سنوات)",
+    "children6to12Count": "عدد الأطفال (6 - 12 سنة)",
+    "phone": "رقم الهاتف",
+    "whatsApp": "رقم الواتساب",
+    "roomType": "نوع الغرفة",
+    "specialRequests": "طلبات خاصة",
+    "idImages": "صور البطاقات الشخصية",
+    "uploadIds": "رفع صور البطاقات",
+    "priceCalculation": "حساب السعر",
+    "submitBooking": "إرسال الحجز",
+    "bookingSuccess": "تم إرسال الحجز بنجاح",
+    "bookingError": "حدث خطأ في إرسال الحجز",
+    "status": {
+      "pending": "في الانتظار",
+      "confirmed": "مؤكد",
+      "cancelled": "ملغي"
+    }
+  },
+  "validation": {
+    "required": "هذا الحقل مطلوب",
+    "email": "البريد الإلكتروني غير صحيح",
+    "phone": "رقم الهاتف غير صحيح",
+    "minLength": "يجب أن يكون على الأقل {{count}} أحرف",
+    "maxLength": "يجب ألا يزيد عن {{count}} حرف",
+    "min": "يجب أن يكون على الأقل {{count}}",
+    "max": "يجب ألا يزيد عن {{count}}"
+  },
+  "errors": {
+    "networkError": "خطأ في الاتصال بالشبكة",
+    "serverError": "خطأ في الخادم",
+    "notFound": "غير موجود",
+    "unauthorized": "غير مصرح",
+    "forbidden": "ممنوع",
+    "invalidData": "بيانات غير صحيحة"
+  }
+}

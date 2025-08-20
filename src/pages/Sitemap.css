@@ -1,0 +1,166 @@
+/* Sitemap Page Styles */
+
+.sitemap-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Page Header */
+.sitemap-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4rem 0 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sitemap-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ffffff" fill-opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+  opacity: 0.3;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+
+/* Sitemap Content */
+.sitemap-content {
+  padding: 4rem 0;
+}
+
+.sitemap-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sitemap-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.sitemap-card-header {
+  border: none;
+  padding: 1.5rem;
+}
+
+.sitemap-link {
+  border: none;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sitemap-link:hover {
+  background: #f8f9fa;
+  padding-right: 2rem;
+}
+
+.sitemap-link:hover .bi-arrow-left {
+  transform: translateX(-5px);
+  color: #1ABC9C !important;
+}
+
+.sitemap-link .bi-arrow-left {
+  transition: all 0.3s ease;
+}
+
+/* Info Card */
+.info-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1ABC9C 0%, rgba(26, 188, 156, 0.1) 100%);
+}
+
+.info-icon {
+  font-size: 3rem;
+  color: #1ABC9C;
+}
+
+.info-title {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.info-text {
+  color: #5a6c7d;
+  font-size: 1.1rem;
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contact-option {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: #1ABC9C;
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.contact-option:hover {
+  background: #16A085;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sitemap-header {
+    padding: 3rem 0 2rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .sitemap-content {
+    padding: 3rem 0;
+  }
+  
+  .contact-options {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-option {
+    width: 100%;
+    justify-content: center;
+    max-width: 250px;
+  }
+}

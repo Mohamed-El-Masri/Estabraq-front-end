@@ -1,0 +1,376 @@
+/* Estabraq Tourism Global Styles */
+
+/* CSS Imports - Must be at the top */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Color Palette Variables */
+:root {
+  /* Primary Colors */
+  --turquoise: #1ABC9C;
+  --sunset-orange: #FF7043;
+  --golden-yellow: #FFD54F;
+  --sky-blue: #4FC3F7;
+  --coral-pink: #FF8A80;
+  
+  /* Neutral Colors */
+  --sand-beige: #F5DEB3;
+  --deep-navy: #2C3E50;
+  --white: #FFFFFF;
+  --light-gray: #F8F9FA;
+  --dark-gray: #6C757D;
+  
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, var(--turquoise), var(--sky-blue));
+  --secondary-gradient: linear-gradient(135deg, var(--sunset-orange), var(--golden-yellow));
+  --coral-gradient: linear-gradient(135deg, var(--coral-pink), var(--sunset-orange));
+  
+  /* Shadows */
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Border Radius */
+  --border-radius-sm: 6px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 20px;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--deep-navy);
+  background-color: var(--light-gray);
+  overflow-x: hidden;
+}
+
+/* Arabic Direction Support */
+[dir="rtl"] {
+  font-family: 'Cairo', sans-serif;
+  text-align: right;
+}
+
+[dir="rtl"] .navbar-nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .breadcrumb {
+  flex-direction: row-reverse;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+h1 { color: var(--turquoise); }
+h2 { color: var(--sunset-orange); }
+h3 { color: var(--golden-yellow); }
+
+/* Custom Button Styles */
+.btn-primary {
+  background: var(--primary-gradient);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: var(--transition-normal);
+  box-shadow: var(--card-shadow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+  background: var(--primary-gradient);
+}
+
+.btn-secondary {
+  background: var(--secondary-gradient);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  transition: var(--transition-normal);
+  box-shadow: var(--card-shadow);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--turquoise);
+  color: var(--turquoise);
+  background: transparent;
+  transition: var(--transition-normal);
+}
+
+.btn-outline-primary:hover {
+  background: var(--turquoise);
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition-normal);
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+}
+
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+  transition: var(--transition-slow);
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Badge Styles */
+.badge {
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+}
+
+.badge-beach { background-color: var(--turquoise); }
+.badge-nile { background-color: var(--sky-blue); }
+.badge-desert { background-color: var(--sunset-orange); }
+.badge-cultural { background-color: var(--golden-yellow); color: var(--deep-navy); }
+.badge-day { background-color: var(--coral-pink); }
+.badge-festival { background: var(--coral-gradient); }
+
+/* Form Styles */
+.form-control {
+  border-radius: var(--border-radius-md);
+  border: 2px solid #E9ECEF;
+  padding: 12px 16px;
+  transition: var(--transition-fast);
+}
+
+.form-control:focus {
+  border-color: var(--turquoise);
+  box-shadow: 0 0 0 0.2rem rgba(26, 188, 156, 0.25);
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background: linear-gradient(90deg, var(--turquoise), var(--sky-blue));
+  box-shadow: var(--card-shadow);
+  padding: 16px 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white !important;
+}
+
+.navbar-nav .nav-link {
+  color: white !important;
+  font-weight: 500;
+  margin: 0 8px;
+  padding: 8px 16px !important;
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-fast);
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+              url('https://images.unsplash.com/photo-1539650116574-75c0c6d0bf12?ixlib=rb-4.0.3') center/cover;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Trip Card Specific */
+.trip-card {
+  transition: var(--transition-normal);
+  height: 100%;
+}
+
+.trip-card .card-body {
+  padding: 1.5rem;
+}
+
+.trip-price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--sunset-orange);
+}
+
+.trip-location {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+}
+
+.remaining-seats {
+  background: var(--golden-yellow);
+  color: var(--deep-navy);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.8rem;
+}
+
+/* Gallery Styles */
+.gallery-container {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+
+/* Price Calculator */
+.price-calculator {
+  background: var(--sand-beige);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.price-total {
+  background: var(--turquoise);
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  padding: 12px;
+  border-radius: var(--border-radius-md);
+  margin-top: 1rem;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.spinner-border-custom {
+  width: 3rem;
+  height: 3rem;
+  border: 0.3em solid rgba(26, 188, 156, 0.2);
+  border-top-color: var(--turquoise);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .card-img-top {
+    height: 200px;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    height: 50vh;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility Classes */
+.text-turquoise { color: var(--turquoise) !important; }
+.text-orange { color: var(--sunset-orange) !important; }
+.text-yellow { color: var(--golden-yellow) !important; }
+.bg-turquoise { background-color: var(--turquoise) !important; }
+.bg-orange { background-color: var(--sunset-orange) !important; }
+.bg-beige { background-color: var(--sand-beige) !important; }
+
+.border-turquoise { border-color: var(--turquoise) !important; }
+.border-orange { border-color: var(--sunset-orange) !important; }
+
+.shadow-sm-custom { box-shadow: var(--card-shadow); }
+.shadow-hover-custom { box-shadow: var(--hover-shadow); }

@@ -1,0 +1,110 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "search": "Search",
+    "filter": "Filter",
+    "reset": "Reset",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language"
+  },
+  "navigation": {
+    "trips": "Trips",
+    "categories": "Categories",
+    "bookings": "Bookings",
+    "myBookings": "My Bookings"
+  },
+  "categories": {
+    "beach": "Beach Trips",
+    "nile": "Nile Cruises",
+    "desert": "Desert Safari",
+    "cultural": "Cultural Tours",
+    "dayTrips": "Day Trips",
+    "festivals": "Festival Tours"
+  },
+  "trip": {
+    "title": "Trip Name",
+    "description": "Trip Description",
+    "startDate": "Start Date",
+    "deadline": "Booking Deadline",
+    "startLocation": "Departure Location",
+    "accommodation": "Accommodation",
+    "program": "Trip Program",
+    "gallery": "Photo Gallery",
+    "pricing": "Pricing",
+    "remaining": "Remaining Seats",
+    "required": "Required Count",
+    "mealsIncluded": "Meals Included",
+    "mealsNotIncluded": "Meals Not Included",
+    "bookNow": "Book Now",
+    "viewDetails": "View Details",
+    "fullyBooked": "Fully Booked",
+    "cancelled": "Cancelled"
+  },
+  "pricing": {
+    "adult": "Adult",
+    "child0to4": "Child (0 - 4 years)",
+    "child4to6": "Child (4 - 6 years)",
+    "child6to12": "Child (6 - 12 years)",
+    "roomTypes": "Room Types",
+    "single": "Single",
+    "double": "Double",
+    "triple": "Triple",
+    "extraCost": "Extra Cost",
+    "total": "Total",
+    "egp": "EGP"
+  },
+  "booking": {
+    "form": "Booking Form",
+    "personalInfo": "Personal Information",
+    "tripDetails": "Trip Details",
+    "clientName": "Client Name",
+    "adultsCount": "Number of Adults",
+    "children0to4Count": "Children (0 - 4 years)",
+    "children4to6Count": "Children (4 - 6 years)",
+    "children6to12Count": "Children (6 - 12 years)",
+    "phone": "Phone Number",
+    "whatsApp": "WhatsApp Number",
+    "roomType": "Room Type",
+    "specialRequests": "Special Requests",
+    "idImages": "ID Images",
+    "uploadIds": "Upload ID Images",
+    "priceCalculation": "Price Calculation",
+    "submitBooking": "Submit Booking",
+    "bookingSuccess": "Booking submitted successfully",
+    "bookingError": "Error submitting booking",
+    "status": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Invalid email address",
+    "phone": "Invalid phone number",
+    "minLength": "Must be at least {{count}} characters",
+    "maxLength": "Must not exceed {{count}} characters",
+    "min": "Must be at least {{count}}",
+    "max": "Must not exceed {{count}}"
+  },
+  "errors": {
+    "networkError": "Network connection error",
+    "serverError": "Server error",
+    "notFound": "Not found",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "invalidData": "Invalid data"
+  }
+}
