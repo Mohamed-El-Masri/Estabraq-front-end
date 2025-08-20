@@ -1,0 +1,10 @@
+<!-- Default trip image placeholder -->
+<svg width="400" height="250" xmlns="http://www.w3.org/2000/svg" style="background-color: #f8f9fa;">
+  <rect width="100%" height="100%" fill="#e9ecef"/>
+  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" dy="0.3em" fill="#6c757d">
+    صورة الرحلة
+  </text>
+  <text x="50%" y="65%" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" dy="0.3em" fill="#adb5bd">
+    Trip Image
+  </text>
+</svg>

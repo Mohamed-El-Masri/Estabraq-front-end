@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Container, Row, Col, Button, Spinner, Alert } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -27,29 +27,44 @@ const HomePage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
   // Fetch featured trips and categories using React Query
-  const { data: featuredTripsData, isLoading: tripsLoading, error: tripsError } = useFeaturedTrips(6);
-  const { data: categoriesData, isLoading: categoriesLoading } = useActiveCategories();
+  const tripsQuery = useFeaturedTrips(6);
+  const categoriesQuery = useActiveCategories();
 
   // Extract and map data from React Query response
-  const featuredTrips = featuredTripsData ? mapAPITrips(featuredTripsData) : [];
-  const categories = categoriesData?.categories ? mapAPICategories(categoriesData.categories) : [];
+  const featuredTrips = React.useMemo(() => {
+    if (tripsQuery.data && Array.isArray(tripsQuery.data)) {
+      return mapAPITrips(tripsQuery.data);
+    }
+    return [];
+  }, [tripsQuery.data]);
 
-  const handleCategorySelect = (categoryId: number | null) => {
+  const categories = React.useMemo(() => {
+    if (categoriesQuery.data?.categories && Array.isArray(categoriesQuery.data.categories)) {
+      return mapAPICategories(categoriesQuery.data.categories);
+    }
+    return [];
+  }, [categoriesQuery.data]);
+
+  const tripsLoading = tripsQuery.isLoading;
+  const categoriesLoading = categoriesQuery.isLoading;
+  const tripsError = tripsQuery.error;
+
+  const handleCategorySelect = useCallback((categoryId: number | null) => {
     setSelectedCategory(categoryId);
     if (categoryId) {
       navigate(`/trips?category=${categoryId}`);
     } else {
       navigate('/trips');
     }
-  };
+  }, [navigate]);
 
-  const handleViewDetails = (tripId: number) => {
+  const handleViewDetails = useCallback((tripId: number) => {
     navigate(`/trips/${tripId}`);
-  };
+  }, [navigate]);
 
-  const handleViewAllTrips = () => {
+  const handleViewAllTrips = useCallback(() => {
     navigate('/trips');
-  };
+  }, [navigate]);
 
   return (
     <div className="home-page">
@@ -70,18 +85,20 @@ const HomePage: React.FC = () => {
                 </p>
               </div>
 
-              {categoriesLoading ? (
+              {categories && categories.length > 0 ? (
+                <CategoryFilter
+                  categories={categories}
+                  selectedCategory={selectedCategory}
+                  onCategorySelect={handleCategorySelect}
+                  showAll={true}
+                />
+              ) : categoriesLoading ? (
                 <div className="text-center">
                   <Spinner animation="border" variant="primary" />
                 </div>
               ) : (
-                <div className="fade-in">
-                  <CategoryFilter
-                    categories={categories || []}
-                    selectedCategory={selectedCategory}
-                    onCategorySelect={handleCategorySelect}
-                    showAll={true}
-                  />
+                <div className="text-center">
+                  <p className="text-muted">لا توجد فئات متاحة حالياً</p>
                 </div>
               )}
             </Col>
@@ -105,32 +122,16 @@ const HomePage: React.FC = () => {
             </Col>
           </Row>
 
-          {tripsLoading ? (
-            <Row>
-              <Col lg={12} className="text-center">
-                <div className="loading-spinner">
-                  <Spinner animation="border" className="spinner-border-custom" />
-                  <p className="mt-3">{t('common.loading')}</p>
-                </div>
-              </Col>
-            </Row>
-          ) : tripsError ? (
-            <Row>
-              <Col lg={12}>
-                <Alert variant="danger" className="text-center">
-                  <h5>{t('errors.loadingError', 'خطأ في تحميل الرحلات')}</h5>
-                  <p>{t('errors.tryAgain', 'يرجى المحاولة مرة أخرى')}</p>
-                  <Button variant="outline-danger" onClick={() => window.location.reload()}>
-                    {t('common.retry', 'إعادة المحاولة')}
-                  </Button>
-                </Alert>
-              </Col>
-            </Row>
-          ) : featuredTrips && featuredTrips.length > 0 ? (
+          {featuredTrips && featuredTrips.length > 0 ? (
             <>
               <Row className="g-4 featured-trips-grid">
-                {featuredTrips.map((trip) => (
-                  <Col key={trip.id} lg={4} md={6} className="trip-card-wrapper">
+                {featuredTrips.map((trip, index) => (
+                  <Col 
+                    key={`trip-${trip.id}-${index}`} 
+                    lg={4} 
+                    md={6} 
+                    className="mb-3"
+                  >
                     <TripCard
                       trip={trip}
                       onViewDetails={handleViewDetails}
@@ -152,6 +153,27 @@ const HomePage: React.FC = () => {
                 </Button>
               </div>
             </>
+          ) : tripsLoading ? (
+            <Row>
+              <Col lg={12} className="text-center">
+                <div className="loading-spinner">
+                  <Spinner animation="border" className="spinner-border-custom" />
+                  <p className="mt-3">{t('common.loading')}</p>
+                </div>
+              </Col>
+            </Row>
+          ) : tripsError ? (
+            <Row>
+              <Col lg={12}>
+                <Alert variant="danger" className="text-center">
+                  <h5>{t('errors.loadingError', 'خطأ في تحميل الرحلات')}</h5>
+                  <p>{t('errors.tryAgain', 'يرجى المحاولة مرة أخرى')}</p>
+                  <Button variant="outline-danger" onClick={() => window.location.reload()}>
+                    {t('common.retry', 'إعادة المحاولة')}
+                  </Button>
+                </Alert>
+              </Col>
+            </Row>
           ) : (
             <Row>
               <Col lg={12} className="text-center">

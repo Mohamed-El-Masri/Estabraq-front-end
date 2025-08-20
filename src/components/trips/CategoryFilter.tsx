@@ -20,6 +20,15 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
 
+  // Safety check
+  if (!categories || !Array.isArray(categories)) {
+    return null;
+  }
+
+  if (categories.length === 0) {
+    return null;
+  }
+
   const getCategoryIcon = (categoryName: string): string => {
     const name = categoryName.toLowerCase();
     if (name.includes('beach') || name.includes('بحر')) return 'bi-water';

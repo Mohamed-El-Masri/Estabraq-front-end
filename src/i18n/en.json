@@ -31,7 +31,9 @@
     "desert": "Desert Safari",
     "cultural": "Cultural Tours",
     "dayTrips": "Day Trips",
-    "festivals": "Festival Tours"
+    "festivals": "Festival Tours",
+    "description": "Choose the trip type that suits you",
+    "all": "All Categories"
   },
   "trip": {
     "title": "Trip Name",
@@ -50,7 +52,86 @@
     "bookNow": "Book Now",
     "viewDetails": "View Details",
     "fullyBooked": "Fully Booked",
-    "cancelled": "Cancelled"
+    "cancelled": "Cancelled",
+    "featured": "Featured Trips",
+    "featuredDescription": "Discover the most beautiful tourist destinations in Egypt",
+    "viewAllTrips": "View All Trips"
+  },
+  "hero": {
+    "title": "Discover the Magic of Egypt with Estabraq Tourism",
+    "subtitle": "Exceptional journeys through Egypt's most beautiful destinations with competitive prices and premium service quality",
+    "searchPlaceholder": "Search for your perfect destination...",
+    "exploreTrips": "Explore Trips",
+    "learnMore": "Learn More",
+    "defaultPageTitle": "Estabraq Tourism - Your Gateway to Discover Egypt",
+    "stats": {
+      "trips": "Carefully Organized Trips",
+      "customers": "Satisfied Customers",
+      "destinations": "Premium Tourist Destinations",
+      "years": "Years of Excellence & Experience"
+    }
+  },
+  "stats": {
+    "destinations": "Tourist Destinations",
+    "happyCustomers": "Happy Customers",
+    "completedTrips": "Completed Trips",
+    "rating": "Customer Rating",
+    "title": "Our Achievements in Numbers",
+    "subtitle": "We are proud of what we have achieved with our valued customers"
+  },
+  "testimonials": {
+    "title": "Customer Reviews",
+    "subtitle": "Real experiences from our valued customers",
+    "cta": "Want to be part of success stories?",
+    "ctaButton": "Book Your Trip Now"
+  },
+  "contact": {
+    "whatsapp": "WhatsApp",
+    "whatsappSubtitle": "Contact us immediately",
+    "whatsappAction": "Send Message",
+    "phone": "Direct Call",
+    "phoneSubtitle": "We are available 24/7",
+    "phoneAction": "Call Now",
+    "email": "Email",
+    "emailSubtitle": "We will reply within hours",
+    "emailAction": "Send Email",
+    "location": "Visit Office",
+    "locationSubtitle": "We welcome your visit",
+    "locationAction": "View Map",
+    "quickTitle": "Contact Us Easily",
+    "quickSubtitle": "Choose the best way for you to contact us",
+    "emergency": "Emergency Cases",
+    "emergencyText": "In case of emergency during the trip, contact us immediately",
+    "emergencyCall": "Emergency Call"
+  },
+  "footer": {
+    "tagline": "Exceptional trips in the heart of Egypt",
+    "description": "We are a leading company in organizing tourist trips within Egypt, providing unforgettable tourism experiences with the highest standards of quality and safety.",
+    "quickLinks": "Quick Links",
+    "sitemap": "Site Map",
+    "categories": "Trip Categories",
+    "stayConnected": "Stay Connected",
+    "address": "Cairo, Egypt",
+    "newsletterText": "Subscribe to get the latest offers",
+    "emailPlaceholder": "Enter your email",
+    "copyright": "Estabraq Tourism. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms and Conditions",
+    "cancellation": "Cancellation Policy"
+  },
+  "cta": {
+    "title": "Ready for your next adventure?",
+    "description": "Discover the most beautiful tourist destinations in Egypt and book your trip today",
+    "bookNow": "Book Now"
+  },
+  "features": {
+    "title": "Why Choose Estabraq Tourism?",
+    "safety": "Safety and Reliability",
+    "safetyDesc": "We guarantee you a safe and comfortable trip with the best services",
+    "pricing": "Competitive Prices",
+    "pricingDesc": "The best prices in the market with high quality services",
+    "support": "24/7 Support",
+    "supportDesc": "Support team available to help you anytime"
   },
   "pricing": {
     "adult": "Adult",

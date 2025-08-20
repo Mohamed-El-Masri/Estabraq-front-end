@@ -1,19 +1,55 @@
 import React from 'react';
 import { useActiveCategories } from '../hooks/useCategories';
 import { useFeaturedTrips } from '../hooks/useTrips';
+import { usePersistentQueries, useQueryDebugger } from '../hooks/useQueryHelpers';
+import { Category, Trip } from '../services/estabraqAPI';
 
 const TestIntegrationPage: React.FC = () => {
-  const { categories, loading: categoriesLoading, error: categoriesError } = useActiveCategories();
-  const { trips, loading: tripsLoading, error: tripsError } = useFeaturedTrips(8);
+  // Use persistent queries helper
+  usePersistentQueries();
+  
+  const categoriesQuery = useActiveCategories();
+  const tripsQuery = useFeaturedTrips(8);
+  
+  // Debug queries
+  useQueryDebugger('categories', categoriesQuery);
+  useQueryDebugger('trips', tripsQuery);
+  
+  // Extract data safely with fallbacks
+  const categories = categoriesQuery.data?.categories || [];
+  const categoriesLoading = categoriesQuery.isLoading || categoriesQuery.isFetching;
+  const categoriesError = categoriesQuery.error;
+  
+  const trips = Array.isArray(tripsQuery.data) ? tripsQuery.data : [];
+  const tripsLoading = tripsQuery.isLoading || tripsQuery.isFetching;
+  const tripsError = tripsQuery.error;
 
   // Debug: log the data to see what we're getting
   React.useEffect(() => {
-    if (categories.length > 0) {
-      console.log('Categories data:', categories);
-    }
-    if (trips.length > 0) {
-      console.log('Trips data:', trips);
-    }
+    console.log('Categories Query State:', {
+      data: categoriesQuery.data,
+      isLoading: categoriesQuery.isLoading,
+      isFetching: categoriesQuery.isFetching,
+      error: categoriesQuery.error,
+      isSuccess: categoriesQuery.isSuccess,
+      status: categoriesQuery.status
+    });
+  }, [categoriesQuery]);
+
+  React.useEffect(() => {
+    console.log('Trips Query State:', {
+      data: tripsQuery.data,
+      isLoading: tripsQuery.isLoading,
+      isFetching: tripsQuery.isFetching,
+      error: tripsQuery.error,
+      isSuccess: tripsQuery.isSuccess,
+      status: tripsQuery.status
+    });
+  }, [tripsQuery]);
+
+  React.useEffect(() => {
+    console.log('Processed Categories:', categories);
+    console.log('Processed Trips:', trips);
   }, [categories, trips]);
 
   return (
@@ -38,20 +74,20 @@ const TestIntegrationPage: React.FC = () => {
           </div>
         )}
         
-        {categoriesError && (
+        {!!categoriesError && (
           <div className="alert alert-danger">
             <h5>خطأ في تحميل الفئات:</h5>
-            <p>{categoriesError}</p>
+            <p>فشل في تحميل الفئات من الخادم</p>
           </div>
         )}
         
-        {!categoriesLoading && !categoriesError && categories.length === 0 && (
+        {!categoriesLoading && !categoriesError && categories && categories.length === 0 && (
           <div className="alert alert-warning">لا توجد فئات متاحة</div>
         )}
         
-        {categories.length > 0 && (
+        {categories && categories.length > 0 && (
           <div className="row g-3">
-            {categories.map((category) => (
+            {categories.map((category: Category) => (
               <div key={category.id} className="col-md-6 col-lg-4">
                 <div className="card h-100">
                   {category.imageUrl && (
@@ -88,20 +124,20 @@ const TestIntegrationPage: React.FC = () => {
           </div>
         )}
         
-        {tripsError && (
+        {!!tripsError && (
           <div className="alert alert-danger">
             <h5>خطأ في تحميل الرحلات:</h5>
-            <p>{tripsError}</p>
+            <p>فشل في تحميل الرحلات من الخادم</p>
           </div>
         )}
         
-        {!tripsLoading && !tripsError && trips.length === 0 && (
+        {!tripsLoading && !tripsError && trips && trips.length === 0 && (
           <div className="alert alert-warning">لا توجد رحلات مميزة متاحة</div>
         )}
         
-        {trips.length > 0 && (
+        {trips && trips.length > 0 && (
           <div className="row g-4">
-            {trips.map((trip) => (
+            {trips.map((trip: Trip) => (
               <div key={trip.id} className="col-md-6 col-lg-4">
                 <div className="card h-100">
                   {trip.imageUrl && (
@@ -110,6 +146,10 @@ const TestIntegrationPage: React.FC = () => {
                       className="card-img-top" 
                       alt={trip.titleAr}
                       style={{ height: '250px', objectFit: 'cover' }}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial, sans-serif' font-size='16' text-anchor='middle' fill='%236c757d'%3E%D8%B5%D9%88%D8%B1%D8%A9 %D8%A7%D9%84%D8%B1%D8%AD%D9%84%D8%A9%3C/text%3E%3Ctext x='50%25' y='60%25' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='%23adb5bd'%3ETrip Image%3C/text%3E%3C/svg%3E";
+                      }}
                     />
                   )}
                   <div className="card-body">
@@ -167,16 +207,29 @@ const TestIntegrationPage: React.FC = () => {
           <li>
             <i className={`fas ${categoriesError ? 'fa-times text-danger' : 'fa-check text-success'}`}></i>
             <span className="ms-2">
-              الفئات: {categoriesError ? 'فشل' : `نجح (${categories.length} فئة)`}
+              الفئات: {categoriesError ? 'فشل' : `نجح (${categories ? categories.length : 0} فئة)`}
             </span>
+            {categoriesLoading && <span className="ms-2 text-info">(جاري التحميل...)</span>}
           </li>
           <li>
             <i className={`fas ${tripsError ? 'fa-times text-danger' : 'fa-check text-success'}`}></i>
             <span className="ms-2">
-              الرحلات المميزة: {tripsError ? 'فشل' : `نجح (${trips.length} رحلة)`}
+              الرحلات المميزة: {tripsError ? 'فشل' : `نجح (${trips ? trips.length : 0} رحلة)`}
             </span>
+            {tripsLoading && <span className="ms-2 text-info">(جاري التحميل...)</span>}
           </li>
         </ul>
+        
+        {/* Debug Information */}
+        <details className="mt-3">
+          <summary className="text-muted">معلومات التشخيص</summary>
+          <div className="mt-2 small">
+            <p><strong>Categories Query Status:</strong> {categoriesQuery.status}</p>
+            <p><strong>Trips Query Status:</strong> {tripsQuery.status}</p>
+            <p><strong>Categories Loading:</strong> {categoriesLoading ? 'نعم' : 'لا'}</p>
+            <p><strong>Trips Loading:</strong> {tripsLoading ? 'نعم' : 'لا'}</p>
+          </div>
+        </details>
       </div>
     </div>
   );

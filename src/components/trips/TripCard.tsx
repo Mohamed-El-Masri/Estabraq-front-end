@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Badge, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { Trip } from '../../types';
+import './TripCard.css';
 
 interface TripCardProps {
   trip: Trip;
@@ -11,6 +12,11 @@ interface TripCardProps {
 const TripCard: React.FC<TripCardProps> = ({ trip, onViewDetails }) => {
   const { t, i18n } = useTranslation();
   const isArabic = i18n.language === 'ar';
+
+  // Safety check
+  if (!trip) {
+    return null;
+  }
 
   // Get category badge class
   const getCategoryBadgeClass = (categoryName: string): string => {
@@ -54,17 +60,24 @@ const TripCard: React.FC<TripCardProps> = ({ trip, onViewDetails }) => {
     return null;
   };
 
+  // Default image data URL for when imageUrl is missing or fails to load
+  const defaultImageUrl = "data:image/svg+xml,%3Csvg width='400' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='100%25' height='100%25' fill='%23e9ecef'/%3E%3Ctext x='50%25' y='45%25' font-family='Arial, sans-serif' font-size='16' text-anchor='middle' fill='%236c757d'%3E%D8%B5%D9%88%D8%B1%D8%A9 %D8%A7%D9%84%D8%B1%D8%AD%D9%84%D8%A9%3C/text%3E%3Ctext x='50%25' y='60%25' font-family='Arial, sans-serif' font-size='14' text-anchor='middle' fill='%23adb5bd'%3ETrip Image%3C/text%3E%3C/svg%3E";
+
   const tripTitle = isArabic ? trip.titleAr : trip.titleEn;
   const categoryName = isArabic ? trip.category.nameAr : trip.category.nameEn;
 
   return (
-    <Card className="trip-card fade-in h-100">
+    <Card className="h-100 trip-card">
       <div className="position-relative">
         <Card.Img 
           variant="top" 
-          src={trip.mainImageUrl} 
+          src={trip.mainImageUrl || defaultImageUrl} 
           alt={tripTitle}
           className="card-img-top"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = defaultImageUrl;
+          }}
         />
         {getStatusBadge()}
       </div>
@@ -74,9 +87,9 @@ const TripCard: React.FC<TripCardProps> = ({ trip, onViewDetails }) => {
         <div className="mb-2">
           <Badge className={`${getCategoryBadgeClass(categoryName)} me-2`}>
             {categoryName}
-          </Badge>
-          <Badge className="remaining-seats">
-            {t('trip.remaining')}: {trip.remainingCount}
+        </Badge>
+        <Badge className="remaining-seats">
+          {t('trip.remaining')}: {trip.remainingCount}
           </Badge>
         </div>
 

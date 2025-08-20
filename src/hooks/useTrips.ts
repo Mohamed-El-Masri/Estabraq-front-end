@@ -49,8 +49,16 @@ export const useFeaturedTrips = (count = 6) => {
     queryKey: ['featuredTrips', count],
     queryFn: () => tripsAPI.getFeatured(count),
     staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
+    cacheTime: 30 * 60 * 1000, // 30 minutes
     retry: 2,
-    select: (data) => data.data,
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
+    refetchOnMount: true,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    keepPreviousData: true,
+    refetchInterval: false,
+    select: (data) => {
+      return data.data || data;
+    },
   });
 };

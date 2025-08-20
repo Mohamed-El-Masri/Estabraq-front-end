@@ -8,15 +8,24 @@ export const useCategories = (params?: CategoriesQueryParams) => {
     queryKey,
     queryFn: () => categoriesAPI.getAll(params),
     staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
+    cacheTime: 30 * 60 * 1000, // 30 minutes
     retry: 2,
-    select: (data: PaginatedApiResponse<Category>) => ({
-      categories: data.data.items,
-      totalCount: data.data.totalCount,
-      totalPages: Math.ceil(data.data.totalCount / (params?.pageSize || 10)),
-      currentPage: data.data.page,
-      pageSize: data.data.pageSize,
-    }),
+    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
+    refetchOnMount: true,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: true,
+    keepPreviousData: true,
+    refetchInterval: false,
+    select: (data: PaginatedApiResponse<Category>) => {
+      const result = {
+        categories: data.data?.items || data.data || [],
+        totalCount: data.data?.totalCount || 0,
+        totalPages: Math.ceil((data.data?.totalCount || 0) / (params?.pageSize || 10)),
+        currentPage: data.data?.page || 1,
+        pageSize: data.data?.pageSize || (params?.pageSize || 10),
+      };
+      return result;
+    },
   });
 };
 

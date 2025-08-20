@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Toaster } from 'react-hot-toast';
 
+// Import global styles
+import './styles/variables.css';
+
 // Import components
 import AppNavbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
@@ -29,8 +32,14 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      retry: 1,
+      retry: 2,
+      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 10000),
       staleTime: 5 * 60 * 1000, // 5 minutes
+      cacheTime: 30 * 60 * 1000, // 30 minutes
+      refetchOnMount: true, // Always refetch on mount
+      refetchOnReconnect: true,
+      keepPreviousData: true,
+      refetchInterval: false, // Disable automatic refetching
     },
   },
 });

@@ -1,4 +1,4 @@
-/* HeroSection Component Styles */
+/* HeroSection Component Professional Styles */
 
 .hero-section {
   position: relative;
@@ -8,44 +8,72 @@
   background-repeat: no-repeat;
   color: white;
   overflow: hidden;
-  transition: background-image 1s ease-in-out;
+  transition: background-image 1.5s ease-in-out;
+  min-height: 100vh;
+}
+
+/* Force visibility and override any hiding styles */
+.hero-section,
+.hero-section *,
+.hero-content,
+.hero-content * {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .hero-home {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero-page {
-  min-height: 50vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 2rem 0;
+  padding: 3rem 0;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .hero-title {
-  font-size: 4rem;
-  font-weight: 700;
+  font-size: 3.8rem;
+  font-weight: 800;
   margin-bottom: 1.5rem;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.6);
   color: white;
   line-height: 1.2;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
 }
 
 .hero-subtitle {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 3rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   color: rgba(255, 255, 255, 0.95);
-  font-weight: 300;
-  max-width: 600px;
+  font-weight: 400;
+  max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -384,26 +412,14 @@
 
 /* Animation Classes */
 .slide-up {
-  animation: slideUp 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.slide-up:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.slide-up:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-.slide-up:nth-child(4) {
-  animation-delay: 0.6s;
+  /* animation: slideUp 0.8s ease-out forwards; */
+  opacity: 1 !important; /* Force visible */
+  transform: translateY(0) !important; /* Force position */
 }
 
 .fade-in {
-  animation: fadeIn 0.6s ease-in forwards;
-  opacity: 0;
+  /* animation: fadeIn 0.6s ease-in forwards; */
+  opacity: 1 !important; /* Force visible */
 }
 
 @keyframes slideUp {
